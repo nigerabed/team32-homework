@@ -1,0 +1,48 @@
+
+[
+    {
+      "question": "Which is the largest animal in the world?",
+      "answers": [
+        { "text": "Shark", "correct": false },
+        { "text": "Blue whale", "correct": true },
+        { "text": "Elephant", "correct": false },
+        { "text": "Giraffe", "correct": false }
+      ]
+    },
+    {
+      "question": "Which is the smallest continent in the world?",
+      "answers": [
+        { "text": "Kalahari", "correct": false },
+        { "text": "Gobi", "correct": false },
+        { "text": "Sahara", "correct": false },
+        { "text": "Antarctica", "correct": true }
+      ]
+    },
+    {
+      "question": "Which is the largest desert in the world?",
+      "answers": [
+        { "text": "Asia", "correct": false },
+        { "text": "Australia", "correct": true },
+        { "text": "Arctic", "correct": false },
+        { "text": "Africa", "correct": false }
+      ]
+    },
+    {
+      "question": "What is the capital of Japan?",
+      "answers": [
+        { "text": "Beijing", "correct": false },
+        { "text": "Seoul", "correct": false },
+        { "text": "Tokyo", "correct": true },
+        { "text": "Bangkok", "correct": false }
+      ]
+    },
+    {
+      "question": "Which planet is known as the Red Planet?",
+      "answers": [
+        { "text": "Earth", "correct": false },
+        { "text": "Mars", "correct": true },
+        { "text": "Jupiter", "correct": false },
+        { "text": "Venus", "correct": false }
+      ]
+    }
+  ]
