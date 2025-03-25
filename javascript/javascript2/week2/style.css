@@ -71,3 +71,44 @@ body{
 .incorrect{
     background: #ff9393;
 }
+
+/* Add question front page styles */
+
+#buttonDiv{
+    display: flex;
+    justify-content: space-between;
+}
+.addQuestionBtn{
+    width: 10em;
+    padding: 1em;
+    font-size: 1em;
+    border-radius: .3em;
+    border: 1px solid gray;
+    margin-top: 1em;
+}
+
+#allQuestions{
+    margin-top: 1em;
+}
+
+.allQuestions-style span{
+    font-size: 1.2em;
+    font-weight: bold;
+    
+}
+
+
+.formHide{
+    display: none;
+}
+
+.showAnswerBtn{
+    display: block;
+    font-size: .8em;
+    padding: .3em;
+    margin: .3em 0em;
+}
+
+.hide{
+    display: none;
+}
