@@ -1,5 +1,23 @@
-import questions from "./quizData.json" with { type: "json" };
-console.log("questions", questions);
+// import questions from "./quizData.json" with { type: "json" };
+// console.log("questions", questions);
+
+async function questiontData() {
+    const url = "https://raw.githubusercontent.com/nigerabed/hyf-project-api/refs/heads/main/quizApi/quiz-data.json";
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+  
+      const questions = await response.json();
+      console.log(questions);
+      return questions;
+    } catch (error) {
+      console.error(error.message);
+    }
+    
+  }
+  const questions = await questiontData();
 
 
 const addQuestionBtn = document.getElementById("addQuestionBtn");
@@ -11,7 +29,6 @@ function handleOpenForm(){
 
 
 function handleShowCorrectAnswer(event){
-    console.log("looooog");
     const btnSpan = event.target;
     const sibling = btnSpan.nextElementSibling; // Get the next sibling
     sibling.classList.toggle("hide");

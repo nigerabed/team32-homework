@@ -1,5 +1,23 @@
 
- import questions from "./quizData.json" with { type: "json" };
+ //import questions from "./quizData.json" with { type: "json" };
+
+ async function questiontData() {
+    const url = "https://raw.githubusercontent.com/nigerabed/hyf-project-api/refs/heads/main/quizApi/quiz-data.json";
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+  
+      const questions = await response.json();
+      console.log(questions);
+      return questions;
+    } catch (error) {
+      console.error(error.message);
+    }
+    
+  }
+  const questions = await questiontData();
 
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -37,6 +55,11 @@ function startQuiz(){
 
 function showQuestion(){
     resetState();
+
+    console.log(currentQuestionIndex);
+    console.log(questions);
+    
+
     let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
