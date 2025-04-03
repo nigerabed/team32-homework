@@ -32,6 +32,8 @@ function handleShowCorrectAnswer(event) {
   sibling.classList.toggle("hide");
 }
 function randerQuestions(questions) {
+  console.log("questions", questions);
+  
   const ol = document.getElementById("ol");
   ol.innerHTML = "";
   questions.forEach((question) => {
@@ -50,13 +52,12 @@ function randerQuestions(questions) {
     );
     showAnsBtnSpan.classList.toggle("hide");
     showAnsBtnSpan.innerText = correctAnswer.text;
-
-    showAnsBtnSpan.style.background = "green";
-    showAnsBtnSpan.style.color = "#fff";
+    showAnsBtnSpan.classList.add("showAnsBtnSpan");
     li.appendChild(showAnsBtnSpan);
     showAnswerBtn.addEventListener("click", handleShowCorrectAnswer);
 
     const optionsUl = document.createElement("ul");
+    optionsUl.classList = "optionsUl";
     question.answers.forEach((answer) => {
       const optionsLi = document.createElement("li");
       optionsLi.innerHTML = answer.text;
@@ -65,6 +66,7 @@ function randerQuestions(questions) {
     li.appendChild(optionsUl);
     ol.appendChild(li);
   });
+
 }
 
 randerQuestions(questionsData);
@@ -92,10 +94,10 @@ function handleSubmit(e) {
     ],
   };
 
-  questions.push(newQuestion);
+  questionsData.push(newQuestion);
 
-  randerQuestions();
-  console.log(questions);
+  randerQuestions(questionsData);
+ 
 }
 
 const searchForm = document.querySelector("#searchForm");
