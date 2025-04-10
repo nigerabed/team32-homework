@@ -93,7 +93,20 @@ function handleSubmit(e) {
   questionsData.push(newQuestion);
 
   randerQuestions(questionsData);
-}
+
+    // Clear input fields
+    q[0].value = "";
+    inputTextA[0].value = "";
+    inputTextB[0].value = "";
+    inputTextC[0].value = "";
+    inputTextD[0].value = "";
+  
+    // Uncheck radio buttons (if used for correctAns)
+    for (let i = 0; i < correctAns.length; i++) {
+      correctAns[i].checked = false;
+    }
+  }
+
 
 const searchForm = document.querySelector("#searchForm");
 searchForm.addEventListener("submit", (e) => {

@@ -1,9 +1,9 @@
+// Get the player name from localstorage and showing in html
 const player = JSON.parse(localStorage.getItem("player"));
-console.log("quiz start for player: ", player.name);
-
 const playerElm = document.getElementById("player");
 playerElm.innerHTML = `Player : ${player.name}`;
 
+// Fetching data from github API
 async function questiontData() {
   const url =
     "https://raw.githubusercontent.com/nigerabed/hyf-project-api/refs/heads/main/quizApi/quiz-data.json";
@@ -12,10 +12,7 @@ async function questiontData() {
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
-
-    const questions = await response.json();
-    console.log(questions);
-    return questions;
+    return await response.json();
   } catch (error) {
     console.error(error.message);
   }
@@ -23,29 +20,23 @@ async function questiontData() {
 const questions = await questiontData();
 
 const urlParams = new URLSearchParams(window.location.search);
-console.log(urlParams);
 const sequence = urlParams.get("sequence");
-console.log(sequence);
-
+// schuffle the questions by sequence type
 if (sequence === "random") {
-  function shuffle(questionArr) {
-    // Fisher- yates shuffle algorithm
-
-    for (let i = questionArr.length - 1; i > 0; i--) {
-      let random = Math.floor(Math.random() * (i + 1));
-      [questionArr[i], questionArr[random]] = [
-        questionArr[random],
-        questionArr[i],
-      ];
-    }
-  }
-  shuffle(questions);
+  shuffleRandom(questions);
+} else if (sequence === "alphabetic") {
+  questions.sort((a, b) => a.question.localeCompare(b.question));
 }
 
-if (sequence === "alphabetic") {
-  questions.sort((a, b) => a.question.localeCompare(b.question));
-
-  console.log(questions);
+function shuffleRandom(questionArr) {
+  // Fisher- yates shuffle algorithm
+  for (let i = questionArr.length - 1; i > 0; i--) {
+    let random = Math.floor(Math.random() * (i + 1));
+    [questionArr[i], questionArr[random]] = [
+      questionArr[random],
+      questionArr[i],
+    ];
+  }
 }
 
 const questionElement = document.getElementById("question");
