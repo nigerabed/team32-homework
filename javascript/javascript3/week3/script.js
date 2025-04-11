@@ -94,19 +94,18 @@ function handleSubmit(e) {
 
   randerQuestions(questionsData);
 
-    // Clear input fields
-    q[0].value = "";
-    inputTextA[0].value = "";
-    inputTextB[0].value = "";
-    inputTextC[0].value = "";
-    inputTextD[0].value = "";
-  
-    // Uncheck radio buttons (if used for correctAns)
-    for (let i = 0; i < correctAns.length; i++) {
-      correctAns[i].checked = false;
-    }
-  }
+  // Clear input fields
+  q[0].value = "";
+  inputTextA[0].value = "";
+  inputTextB[0].value = "";
+  inputTextC[0].value = "";
+  inputTextD[0].value = "";
 
+  // Uncheck radio buttons (if used for correctAns)
+  for (let i = 0; i < correctAns.length; i++) {
+    correctAns[i].checked = false;
+  }
+}
 
 const searchForm = document.querySelector("#searchForm");
 searchForm.addEventListener("submit", (e) => {
@@ -121,7 +120,7 @@ searchForm.addEventListener("submit", (e) => {
     // get ellement by id
     errorMsgSpan.classList.remove("hide");
     // innerHtml add the text
-    errorMsgSpan.innerHTML = "search input is empty, please type something";
+    errorMsgSpan.innerHTML = "Search input is empty, please type something";
     randerQuestions(questionsData);
   } else {
     // if not empty:
@@ -133,6 +132,18 @@ searchForm.addEventListener("submit", (e) => {
     });
 
     console.log("filteredSearchedQuestion", filteredSearchedQuestion);
+    if (filteredSearchedQuestion.length == 0) {
+      let allQuestion = document.getElementById("allQuestions");
+      const noQuestionFoundSpan = document.getElementById(
+        "noQuestionFoundSpan"
+      );
+      noQuestionFoundSpan.classList.remove("hide");
+      noQuestionFoundSpan.innerHTML =
+        "No search result found for this keyword " + searchInput;
+      allQuestion.appendChild(noQuestionFoundSpan);
+    } else {
+      noQuestionFoundSpan.classList.add("hide");
+    }
     randerQuestions(filteredSearchedQuestion);
   }
 });

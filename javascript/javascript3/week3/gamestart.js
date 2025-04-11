@@ -1,5 +1,5 @@
-const gameStartPlayer1 = document.getElementById("gameStartPlayer1");
-gameStartPlayer1.addEventListener("click", handleGameStartFromPlayer);
+const gameStartPlayer = document.getElementById("gameStartPlayer");
+gameStartPlayer.addEventListener("click", handleGameStartFromPlayer);
 
 function handleGameStartFromPlayer(e) {
   e.preventDefault();
