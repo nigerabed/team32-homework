@@ -25,9 +25,11 @@ function promiseYesOrNo() {
     })
     .catch((error) => console.log("error fetching data", error));
 }
-promiseYesOrNo();
 
-//Create a promise
+const data = promiseYesOrNo();
+console.log(data);
+    
+//Create a promise 
 const fourSecondTimeoutPromise = new Promise((resolve) => {
   setTimeout(() => {
     resolve("resolved");
