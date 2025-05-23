@@ -1,17 +1,12 @@
-let total = 0;
 
-// for (let j = 2; j < process.argv.length; j++) {
-//      total += parseInt(process.argv[j]);
+// const inputs = process.argv.slice(2).map(Number).filter(n => !isNaN(n));
 
-// }
+const val = process.argv.slice(2);
+ 
+const numberList = val.filter(n=> !isNaN(n))
 
-for (let j = 2; j < process.argv.length; j++) {
-  const value = parseInt(process.argv[j]);
-  if (!isNaN(value)) {
-    total += value;
-    console.log("-------", value);
-  }
-}
+  const total = numberList.reduce((sum, num) => sum + parseInt(num), 0);
+  const average = total / numberList.length;
 
-console.log(total);
-console.log(total / (process.argv.length - 2));
+console.log(average);
+
